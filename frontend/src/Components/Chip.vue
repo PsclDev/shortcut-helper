@@ -1,6 +1,6 @@
 <template>
   <div class="chip">
-    <p>{{ keyString }}</p>
+    <p>{{ key }}</p>
   </div>
 </template>
 
@@ -10,6 +10,11 @@ export default {
     keyString: {
       type: String,
       required: true
+    }
+  },
+  computed: {
+    key() {
+      return this.keyString.toUpperCase();
     }
   }
 };
@@ -23,6 +28,6 @@ export default {
   font-size: 16px;
   font-weight: bold;
   border-radius: 15px;
-  background-color: #f1f1f1;
+  background-color: #cdd4df;
 }
 </style>
