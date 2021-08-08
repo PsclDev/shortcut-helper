@@ -8,12 +8,13 @@
   <h1>Shortcuts-Helper</h1>
   <h3>{{ activeApp || 'No active window' }}</h3>
 
-  <div :class="shortcutList.length > 7 ? 'flex' : ''">
+  <div :class="wrap ? 'wrap' : ''">
     <shortcut
       v-for="shortcut in shortcutList"
       :key="shortcut.Description"
       :keys="shortcut.Keys"
       :description="shortcut.Description"
+      :wrap="wrap"
     />
   </div>
 </template>
@@ -68,6 +69,11 @@ export default {
       }, 30000 + 1000);
     }
   },
+  computed: {
+    wrap() {
+      return this.shortcutList.length > 7;
+    }
+  },
   created() {
     this.startWebsocket();
   }
@@ -100,7 +106,7 @@ h1 {
   margin-bottom: 0;
 }
 
-.flex {
+.wrap {
   display: flex;
   flex-wrap: wrap;
 }

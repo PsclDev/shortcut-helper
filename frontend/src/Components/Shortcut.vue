@@ -1,5 +1,5 @@
 <template>
-  <div class="center">
+  <div class="center" :class="wrap ? 'wrappable' : ''">
     <div class="flex">
       <chip class="space" v-for="key in keys" :key="key" :keyString="key" />
     </div>
@@ -19,6 +19,9 @@ export default {
     description: {
       type: String,
       required: true
+    },
+    wrap: {
+      tye: Boolean
     }
   },
   components: { Chip }
@@ -30,7 +33,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 96%;
   margin: auto;
 }
 
@@ -39,6 +42,10 @@ export default {
   text-align: right;
   width: 50%;
   justify-content: flex-end;
+}
+
+.wrappable {
+  width: 50%;
 }
 
 .space {
