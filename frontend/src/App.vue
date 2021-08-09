@@ -34,12 +34,12 @@ export default {
   components: { Shortcut },
   methods: {
     startWebsocket() {
+      const IP = process.env.VUE_APP_WEBSOCKET_IP;
+      const PORT = process.env.VUE_APP_WEBSOCKET_PORT;
       var _this = this;
 
-      console.log('Starting connection to WebSocket Server');
-      const wsClient = new WebSocket('ws:deathmachine.home:9119/shortcuts');
+      const wsClient = new WebSocket(`ws:${IP}:${PORT}/shortcuts`);
       wsClient.onopen = function () {
-        console.log('Successfully connected to the echo websocket server...');
         this.send('hello from vue');
       };
 
