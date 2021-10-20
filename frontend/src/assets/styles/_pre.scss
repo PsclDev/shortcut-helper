@@ -1,0 +1,36 @@
+body {
+  background-color: $white;
+  color: $darkblue;
+  &.dark {
+    background-color: $darkblue;
+    color: $white;
+    .text-primary {
+      color: $white !important;
+    }
+    .bg-secondary {
+      background-color: $lighterblue !important;
+    }
+  }
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
+
+  margin-top: 60px;
+  margin: 0;
+  padding: 0;
+}
+
+$primary: $darkblue;
+$secondary: #cdd4df;
+
+$success: $green;
+$danger: $red;
+
+$badge-font-size: 1.25em;
+$badge-padding-y: 0.75em;
+$badge-padding-x: 1em;

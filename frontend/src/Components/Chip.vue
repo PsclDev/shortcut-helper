@@ -1,7 +1,7 @@
 <template>
-  <div class="chip">
-    <p>{{ key }}</p>
-  </div>
+  <span class="badge rounded-pill bg-secondary text-primary">
+    {{ key }}
+  </span>
 </template>
 
 <script>
@@ -19,15 +19,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.chip {
-  display: inline-block;
-  padding: 0 25px;
-  height: 50px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 15px;
-  background-color: #cdd4df;
-}
-</style>

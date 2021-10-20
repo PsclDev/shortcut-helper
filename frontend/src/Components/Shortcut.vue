@@ -1,9 +1,11 @@
 <template>
-  <div class="center" :class="wrap ? 'wrappable' : ''">
-    <div class="flex">
-      <chip class="space" v-for="key in keys" :key="key" :keyString="key" />
+  <div class="d-flex align-items-center justify-content-center w-50 m-auto">
+    <div class="d-flex text-end justify-content-end w-50">
+      <chip class="me-2" v-for="key in keys" :key="key" :keyString="key" />
     </div>
-    <p class="description">{{ description }}</p>
+    <div class="w-50 ms-5 mt-4 mb-4 text-start">
+      <div class="fs-5">{{ description }}</div>
+    </div>
   </div>
 </template>
 
@@ -27,35 +29,3 @@ export default {
   components: { Chip }
 };
 </script>
-
-<style scoped>
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 96%;
-  margin: auto;
-}
-
-.flex {
-  display: flex;
-  text-align: right;
-  width: 50%;
-  justify-content: flex-end;
-}
-
-.wrappable {
-  width: 50%;
-}
-
-.space {
-  margin: 0px 5px;
-}
-
-.description {
-  margin-left: 50px;
-  font-size: 20px;
-  text-align: left;
-  width: 50%;
-}
-</style>

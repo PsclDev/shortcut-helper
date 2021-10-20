@@ -1,119 +1,38 @@
 <template>
-  <div class="status">
-    <p :style="socketConnected ? 'color: #7dbf00' : 'color: #db122f'">
-      {{ socketConnected ? 'Socket Connected' : 'Socket not connected' }}
-    </p>
-  </div>
-
-  <h1>Shortcuts-Helper</h1>
-  <h3>{{ activeApp || 'No active window' }}</h3>
-
-  <div :class="wrap ? 'wrap' : ''">
-    <shortcut
-      v-for="shortcut in shortcutList"
-      :key="shortcut.Description"
-      :keys="shortcut.Keys"
-      :description="shortcut.Description"
-      :wrap="wrap"
-    />
+  <TheHeader />
+  <div class="container-fluid">
+    <div class="flex-wrap d-flex">
+      <shortcut
+        class=""
+        v-for="shortcut in shortcutList"
+        :key="shortcut.Description"
+        :keys="shortcut.Keys"
+        :description="shortcut.Description"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import TheHeader from './Components/Layout/TheHeader';
 import Shortcut from './Components/Shortcut';
 
 export default {
   name: 'App',
-  data() {
-    return {
-      socketConnected: false,
-      activeApp: null,
-      shortcutList: []
-    };
-  },
-  components: { Shortcut },
-  methods: {
-    startWebsocket() {
-      const IP = process.env.VUE_APP_WEBSOCKET_IP;
-      const PORT = process.env.VUE_APP_WEBSOCKET_PORT;
-      var _this = this;
+  components: { TheHeader, Shortcut },
+  created() {
+    this.$store.dispatch('getMode');
 
-      const wsClient = new WebSocket(`ws:${IP}:${PORT}/shortcuts`);
-      wsClient.onopen = function () {
-        this.send('hello from vue');
-      };
+    const darkMode = this.$store.getters.getMode;
+    if (darkMode === 'dark')
+      document.querySelector('body').classList.toggle('dark');
 
-      wsClient.onmessage = function (message) {
-        if (message.data.includes('Connected')) _this.socketConnected = true;
-
-        if (message.data.includes('{')) {
-          const data = JSON.parse(message.data);
-          _this.activeApp = data.Name;
-          _this.shortcutList = data.Shortcuts;
-        }
-      };
-
-      wsClient.onclose = function () {
-        _this.socketConnected = false;
-      };
-
-      wsClient.onerror = function () {
-        _this.socketConnected = false;
-      };
-    },
-    heartbeat() {
-      clearTimeout(this.pingTimeout);
-
-      this.pingTimeout = setTimeout(() => {
-        this.terminate();
-      }, 30000 + 1000);
-    }
+    this.$store.dispatch('startWebsocket');
   },
   computed: {
-    wrap() {
-      return this.shortcutList.length > 7;
+    shortcutList() {
+      return this.$store.getters.shortcutList;
     }
-  },
-  created() {
-    this.startWebsocket();
   }
 };
 </script>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
-
-html,
-body {
-  background-color: #f8f8ff;
-  color: #090c10;
-}
-
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  font-family: 'Nunito', sans-serif;
-  text-align: center;
-
-  margin-top: 60px;
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  font-size: 40px;
-  margin-bottom: 0;
-}
-
-.wrap {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.status {
-  position: absolute;
-  top: 0;
-  right: 15px;
-}
-</style>
