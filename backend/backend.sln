@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "common", "common\common.csproj", "{084C9E2F-1477-4214-B2C1-EE4FE85E472B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "macOs", "macOs\macOs.csproj", "{A893B9DB-442B-44C2-9FFB-F02873AE1A99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "winOs", "winOs\winOs.csproj", "{1FB01C97-892D-442E-809B-4D31A5E4D53F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{084C9E2F-1477-4214-B2C1-EE4FE85E472B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{084C9E2F-1477-4214-B2C1-EE4FE85E472B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{084C9E2F-1477-4214-B2C1-EE4FE85E472B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{084C9E2F-1477-4214-B2C1-EE4FE85E472B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A893B9DB-442B-44C2-9FFB-F02873AE1A99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A893B9DB-442B-44C2-9FFB-F02873AE1A99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A893B9DB-442B-44C2-9FFB-F02873AE1A99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A893B9DB-442B-44C2-9FFB-F02873AE1A99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FB01C97-892D-442E-809B-4D31A5E4D53F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FB01C97-892D-442E-809B-4D31A5E4D53F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FB01C97-892D-442E-809B-4D31A5E4D53F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FB01C97-892D-442E-809B-4D31A5E4D53F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

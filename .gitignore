@@ -520,3 +520,6 @@ dist
 .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp,dotnetcore,node
+.DS_Store
+settings.json
+apps.json
