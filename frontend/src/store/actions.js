@@ -24,9 +24,9 @@ export default {
     startWebsocket(context) {
         console.log('start');
         const IP = process.env.VUE_APP_WEBSOCKET_IP;
-        const PORT = process.env.VUE_APP_WEBSOCKET_PORT;
+        const LISTENING_PATH = process.env.VUE_APP_WEBSOCKET_LISTENING_PATH;
 
-        const wsClient = new WebSocket(`ws:${IP}:${PORT}/shortcuts`);
+        const wsClient = new WebSocket(`ws:${IP}${LISTENING_PATH}`);
         wsClient.onopen = function () {
             this.send('hello from vue');
         };
